@@ -29,10 +29,10 @@ public class LemonadeStand {
         int cupsRemaining;
 
         double temperature; // randomized; could be on a scale from 1-10 where 1 is lowest temp $
+
+		Scanner scan = new Scanner(System.in);
                                                                  
         public boolean setup() {
-		
-			Scanner scan = new Scanner(System.in);
 			
 			System.out.println("....................");
 			System.out.println("1 lemon: $" + costofLemon);
@@ -76,6 +76,25 @@ public class LemonadeStand {
 			return output
 		}                          
 		
+		public void setupPitcher() {
+			
+			System.out.println("You now must make pitchers of lemonade. Each pitcher serves 10 cups of lemonade. \n Knowing your inventory, determine how many of each ingredient you want to put in each pitcher. \n Keep in mind that you should be balancing sourness and sweetness as well as the temperature of the lemonade for maximum customer approval. \n You can choose integers (i.e. 1, 3) or decimals (0.25, 0.5) for each ingredient");
+			System.out.println("Your inventory: " + qtyLemons + " lemons, " + qtySugars + " cups of sugar, " + qtyIce + " cups of ice, and " + qtyCups + " cups");
+			System.out.println("\n");
+	
+			
+			System.out.println("You have " + qtyLemons + ". How many lemons would you like to add per pitcher?");
+			lemonsPerPitcher = scan.nextDouble();
+			System.out.println("You have " + qtySugars + ". How many cups of sugar would you like to add per pitcher?");
+			sugarsPerPitcher = scan.nextDouble();
+			System.out.println("You have " + qtyIce + ". How many cups of ice would you like to add per pitcher?");
+			icePerPitcher = scan.nextDouble();
+			
+			System.out.println("Your recipe: \n" + lemonsPerPitcher + " lemons \n" + sugarsPerPitcher + " cups of sugar \n" + icePerPitcher + " cups of ice");
+			
+			
+		
+	}
 
 }        
 	
