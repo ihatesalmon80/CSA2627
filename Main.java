@@ -4,9 +4,9 @@ public class Main {
 		LemonadeStand l1 = new LemonadeStand();
 		boolean continue1 = l1.setup();
 		if (continue1 == true) {
-			li.setupPitcher(); }
+			l1.setupPitcher(); }
 		else {
-			break(); }
+			}
 
     }
 

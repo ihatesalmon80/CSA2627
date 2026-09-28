@@ -19,11 +19,12 @@ public class LemonadeStand {
         int qtyIce = 0;
         int qtyCups = 0;
         
-        int lemonsPerPitcher; // initialize now, ask for user input later
-        int sugarsPerPitcher;
-        int icePerPitcher;
-        int cupsPerPitcher = 10;
+        double lemonsPerPitcher; // initialize now, ask for user input later
+        double sugarsPerPitcher;
+        double icePerPitcher;
+        double cupsPerPitcher = 10;
         
+        int qtyPitchers;
         boolean moreCupsInPitcher = true;
         int totalCustomers = 0;
         int cupsRemaining;
@@ -64,35 +65,68 @@ public class LemonadeStand {
 			if (cashOnHand < 0) {
 				System.out.println("You have no more cash :(");
 				System.out.println("Thanks for playing!");
-				boolean output = false
+				boolean output = false;
+				return output;
 			}
 			
 			else {
 				System.out.println("Your inventory: " + qtyLemons + " lemons, " + qtySugars + " cups of sugar, " + qtyIce + " cups of ice, and " + qtyCups + " cups");
+				System.out.println("\n");
 				System.out.println("You have $" + cashOnHand +  " left.");
-				boolean output = true
+				System.out.println("\n");
+				boolean output = true;
+				return output;
 			}
 			
-			return output
 		}                          
 		
 		public void setupPitcher() {
 			
 			System.out.println("You now must make pitchers of lemonade. Each pitcher serves 10 cups of lemonade. \n Knowing your inventory, determine how many of each ingredient you want to put in each pitcher. \n Keep in mind that you should be balancing sourness and sweetness as well as the temperature of the lemonade for maximum customer approval. \n You can choose integers (i.e. 1, 3) or decimals (0.25, 0.5) for each ingredient");
+			System.out.println("\n");
 			System.out.println("Your inventory: " + qtyLemons + " lemons, " + qtySugars + " cups of sugar, " + qtyIce + " cups of ice, and " + qtyCups + " cups");
 			System.out.println("\n");
 	
 			
-			System.out.println("You have " + qtyLemons + ". How many lemons would you like to add per pitcher?");
+			System.out.println("You have " + qtyLemons + " lemons. How many lemons would you like to add per pitcher?");
 			lemonsPerPitcher = scan.nextDouble();
-			System.out.println("You have " + qtySugars + ". How many cups of sugar would you like to add per pitcher?");
+			System.out.println("You have " + qtySugars + " cups of sugar. How many cups of sugar would you like to add per pitcher?");
 			sugarsPerPitcher = scan.nextDouble();
-			System.out.println("You have " + qtyIce + ". How many cups of ice would you like to add per pitcher?");
+			System.out.println("You have " + qtyIce + " cups of ice. How many cups of ice would you like to add per pitcher?");
 			icePerPitcher = scan.nextDouble();
 			
-			System.out.println("Your recipe: \n" + lemonsPerPitcher + " lemons \n" + sugarsPerPitcher + " cups of sugar \n" + icePerPitcher + " cups of ice");
+			System.out.println("\n");
+			System.out.println("Your recipe: \n \n" + lemonsPerPitcher + " lemons \n" + sugarsPerPitcher + " cups of sugar \n" + icePerPitcher + " cups of ice");
 			
+			int temp1 = (int) (qtyLemons / lemonsPerPitcher);
+			int temp2 = (int) (qtyIce / icePerPitcher);
+			int temp3 = (int) (qtySugars / sugarsPerPitcher); 
 			
+			if (temp1 < temp2) {
+				if (temp1 < temp3) {
+					qtyPitchers = temp1;
+				}
+				else {
+					qtyPitchers = temp3;
+				}
+			}
+			else {
+				if (temp2 < temp3) {
+					qtyPitchers = temp2;
+				}
+				else {
+					qtyPitchers = temp3;
+				}
+			}	
+			System.out.println("\n");
+			System.out.println("You have enough ingredients to make " + qtyPitchers + " pitchers of lemonade");
+			//System.out.println("That's " + qtyPitchers*10 + " cups!");
+			if (qtyCups > (qtyPitchers*10)) {
+				System.out.println("You have " + qtyPitchers*10 + " cups in total");
+			}
+			else {
+				System.out.println("You have " + qtyCups + " cups in total");
+			}
 		
 	}
 
