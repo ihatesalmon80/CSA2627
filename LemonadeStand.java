@@ -21,10 +21,11 @@ public class LemonadeStand {
         
         double lemonsPerPitcher; // initialize now, ask for user input later
         double sugarsPerPitcher;
-        double icePerPitcher;
+        double icePerCup;
         double cupsPerPitcher = 10;
         
         int qtyPitchers;
+        double pricePerCup;
         boolean moreCupsInPitcher = true;
         int totalCustomers = 0;
         int cupsRemaining;
@@ -41,7 +42,7 @@ public class LemonadeStand {
 			System.out.println("....................");
 			System.out.println("1 lemon: $" + costofLemon);
 			System.out.println("1 cup of sugar: $" + costofSugar);
-			System.out.println("100 ice cubes: $" + costofIce);
+			System.out.println("1 bag of ice cubes (100 ice cubes): $" + costofIce);
 			System.out.println("1 cup: $" + costofCups);
 			System.out.println("....................");
 			System.out.println("\n");
@@ -55,7 +56,7 @@ public class LemonadeStand {
 			qtySugars = scan.nextInt();
 			cashOnHand = cashOnHand - (qtySugars * costofSugar);
 			
-			System.out.println("You have $" + cashOnHand + ". How many ice cubes would you like to purchase?");
+			System.out.println("You have $" + cashOnHand + ". How many bags of ice cubes would you like to purchase?");
 			int qtyIceDividedBy100 = scan.nextInt();
 			qtyIce = qtyIceDividedBy100 * 100;
 			cashOnHand = cashOnHand - (qtyIceDividedBy100 * costofIce);
@@ -96,14 +97,16 @@ public class LemonadeStand {
 			lemonsPerPitcher = scan.nextDouble();
 			System.out.println("You have " + qtySugars + " cups of sugar. How many cups of sugar would you like to add per pitcher?");
 			sugarsPerPitcher = scan.nextDouble();
-			System.out.println("You have " + qtyIce + " cups of ice. How many cups of ice would you like to add per pitcher?");
-			icePerPitcher = scan.nextDouble();
+			System.out.println("You have " + qtyIce + " ice cubes. How many ice cubes would you like to add per cup?");
+			icePerCup = scan.nextDouble();
+			System.out.println("What would you like to set the price per cup to be? (Suggested range: $0.10 to $1.00)\n Type number only, no dollar sign");
+			pricePerCup = scan.nextDouble();
 			
 			System.out.println("\n");
-			System.out.println("Your recipe: \n \n" + lemonsPerPitcher + " lemons \n" + sugarsPerPitcher + " cups of sugar \n" + icePerPitcher + " cups of ice");
+			System.out.println("Your recipe: \n \n" + lemonsPerPitcher + " lemons/pitcher \n" + sugarsPerPitcher + " cups of sugar/pitcher \n" + icePerCup + " ice cubes/cup \n$" + pricePerCup + "/cup" );
 			
 			int temp1 = (int) (qtyLemons / lemonsPerPitcher);
-			int temp2 = (int) (qtyIce / icePerPitcher);
+			int temp2 = (int) (qtyIce / (icePerCup * 10));
 			int temp3 = (int) (qtySugars / sugarsPerPitcher); 
 			
 			if (temp1 < temp2) {
@@ -126,10 +129,10 @@ public class LemonadeStand {
 			System.out.println("You have enough ingredients to make " + qtyPitchers + " pitchers of lemonade");
 			//System.out.println("That's " + qtyPitchers*10 + " cups!");
 			if (qtyCups > (qtyPitchers*10)) {
-				System.out.println("You have " + qtyPitchers*10 + " cups in total");
+				System.out.println("You can make and sell " + qtyPitchers*10 + " cups of lemonade");
 			}
 			else {
-				System.out.println("You have " + qtyCups + " cups in total");
+				System.out.println("You can make and sell " + qtyCups + " cups of lemonade");
 			}
 			
 			
