@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class LemonadeStand {
         
-        int daysToSell = 7;
+        int daysToSell;
 
         double cashOnHand = 20.0;
-        double costofLemon = 1.50; // 1 lemon
-        double costofSugar = 2.00; // 1 cup
-        double costofIce = 0.75; // 1 cup
-        double costofCups = 0.50; // 1 cup
+        double costofLemon = 0.10; // 1 lemon
+        double costofSugar = 0.15; // 1 cup
+        double costofIce = 0.50; // 100 cubes
+        double costofCups = 0.01; // 1 cup
 
         int qtyLemons = 0;
         int qtySugars = 0;
@@ -35,26 +35,30 @@ public class LemonadeStand {
                                                                  
         public boolean setup() {
 			
+			System.out.println("Welcome to Lemonade Stand! \n \n You can play for 7, 14, or 30 days. Which option would you like to choose?");
+			daysToSell = scan.nextInt();
+			
 			System.out.println("....................");
 			System.out.println("1 lemon: $" + costofLemon);
 			System.out.println("1 cup of sugar: $" + costofSugar);
-			System.out.println("1 cup of ice: $" + costofIce);
+			System.out.println("100 ice cubes: $" + costofIce);
 			System.out.println("1 cup: $" + costofCups);
 			System.out.println("....................");
 			System.out.println("\n");
 			
 			System.out.println("You have $" + cashOnHand + ". How many lemons would you like to purchase?");
 			qtyLemons = scan.nextInt(); // still need to clear buffer
-			//String temp = scan.nextLine(); // this line doesn't allow for user input bc enter is hanging -> handling storage issue as a buffer
+			//String temp = scan.nextLine(); this line doesn't allow for user input bc enter is hanging -> handling storage issue as a buffer
 			cashOnHand = cashOnHand - (qtyLemons * costofLemon);
 			
 			System.out.println("You have $" + cashOnHand + ". How many cups of sugar would you like to purchase?");
 			qtySugars = scan.nextInt();
 			cashOnHand = cashOnHand - (qtySugars * costofSugar);
 			
-			System.out.println("You have $" + cashOnHand + ". How many cups of ice would you like to purchase?");
-			qtyIce = scan.nextInt();
-			cashOnHand = cashOnHand - (qtyIce * costofIce);
+			System.out.println("You have $" + cashOnHand + ". How many ice cubes would you like to purchase?");
+			int qtyIceDividedBy100 = scan.nextInt();
+			qtyIce = qtyIceDividedBy100 * 100;
+			cashOnHand = cashOnHand - (qtyIceDividedBy100 * costofIce);
 			
 			System.out.println("You have $" + cashOnHand + ". How many cups would you like to purchase?");
 			qtyCups = scan.nextInt();
@@ -70,7 +74,7 @@ public class LemonadeStand {
 			}
 			
 			else {
-				System.out.println("Your inventory: " + qtyLemons + " lemons, " + qtySugars + " cups of sugar, " + qtyIce + " cups of ice, and " + qtyCups + " cups");
+				System.out.println("Your inventory: " + qtyLemons + " lemons, " + qtySugars + " cups of sugar, " + qtyIce + " ice cubes, and " + qtyCups + " cups");
 				System.out.println("\n");
 				System.out.println("You have $" + cashOnHand +  " left.");
 				System.out.println("\n");
@@ -127,6 +131,9 @@ public class LemonadeStand {
 			else {
 				System.out.println("You have " + qtyCups + " cups in total");
 			}
+			
+			
+		//public 
 		
 	}
 
