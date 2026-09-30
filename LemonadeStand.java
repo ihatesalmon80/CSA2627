@@ -18,6 +18,7 @@ public class LemonadeStand {
         int qtySugars = 0;
         int qtyIce = 0;
         int qtyCups = 0;
+        int qtyCupsToSell;
         
         double lemonsPerPitcher; // initialize now, ask for user input later
         double sugarsPerPitcher;
@@ -33,7 +34,11 @@ public class LemonadeStand {
         double temperature; // randomized; could be on a scale from 1-10 where 1 is lowest temp $
 
 		Scanner scan = new Scanner(System.in);
-                                                                 
+		
+        /* user decides length of game by inputting # of days 
+         * user buys all materials for lemonade
+         * method proceeds if after buying everything, use is not bankrupt
+         */                                                         
         public boolean setup() {
 			
 			System.out.println("Welcome to Lemonade Stand! \n \n You can play for 7, 14, or 30 days. Which option would you like to choose?");
@@ -83,8 +88,13 @@ public class LemonadeStand {
 				return output;
 			}
 			
-		}                          
-		
+		}          
+		                
+		/* sets up recipe for each pitcher of lemonade
+		 * sets up price for each cup of lemonade
+		 * determines maximum pitchers/cups user can make
+		 */
+		 
 		public void setupPitcher() {
 			
 			System.out.println("You now must make pitchers of lemonade. Each pitcher serves 10 cups of lemonade. \n Knowing your inventory, determine how many of each ingredient you want to put in each pitcher. \n Keep in mind that you should be balancing sourness and sweetness as well as the temperature of the lemonade for maximum customer approval. \n You can choose integers (i.e. 1, 3) or decimals (0.25, 0.5) for each ingredient");
@@ -130,15 +140,28 @@ public class LemonadeStand {
 			//System.out.println("That's " + qtyPitchers*10 + " cups!");
 			if (qtyCups > (qtyPitchers*10)) {
 				System.out.println("You can make and sell " + qtyPitchers*10 + " cups of lemonade");
+				qtyCupsToSell = qtyPitchers*10;
 			}
 			else {
 				System.out.println("You can make and sell " + qtyCups + " cups of lemonade");
+				qtyCupsToSell = qtyCups;
 			}
 			
+		}
 			
-		//public 
+			
+		/* runs one day of selling lemonade
+		 * 
+		 * 
+		 */
+		 public double gamePlay() {
+			 int n = qtyCups;
+			 return qtyCups;
+			 
+			 
+		}
 		
-	}
+	
 
 }        
 	
